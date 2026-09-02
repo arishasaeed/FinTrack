@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Chart.js for beautiful charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="container glass-panel">
+        <header>
+            <h1>FinTrack</h1>
+            <p>Personal Finance Analytics</p>
+        </header>
+
+        <main>
+            <!-- Upload Section -->
+            <section class="upload-section glass-card">
+                <h2>Upload Transactions (CSV)</h2>
+                <form id="uploadForm">
+                    <input type="file" id="csvFile" accept=".csv" required>
+                    <button type="submit" class="btn-glow">Process Data</button>
+                </form>
+                <div id="uploadStatus" class="status-msg"></div>
+            </section>
+
+            <!-- Summary Cards -->
+            <section class="summary-cards">
+                <div class="card glass-card">
+                    <h3>Total Income</h3>
+                    <p id="totalIncome" class="amount success">$0.00</p>
+                </div>
+                <div class="card glass-card">
+                    <h3>Total Expenses</h3>
+                    <p id="totalExpenses" class="amount danger">$0.00</p>
+                </div>
+                <div class="card glass-card">
+                    <h3>Net Savings</h3>
+                    <p id="netSavings" class="amount primary">$0.00</p>
+                </div>
+            </section>
+
+            <div class="grid-2-col">
+                <!-- Charts Section -->
+                <section class="chart-section glass-card">
+                    <h2>Spending by Category</h2>
+                    <div class="chart-container">
+                        <canvas id="spendingChart"></canvas>
+                    </div>
+                </section>
+
+                <!-- Anomalies Section -->
+                <section class="anomalies-section glass-card">
+                    <h2>Recent Anomalies <span class="badge" id="anomalyCount">0</span></h2>
+                    <ul id="anomaliesList" class="transaction-list">
+                        <li class="empty-state">No anomalies detected.</li>
+                    </ul>
+                </section>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
